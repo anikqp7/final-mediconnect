@@ -1,0 +1,6 @@
+-- MediConnect database script (SQLite)
+CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL);
+CREATE TABLE Patients (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, gender TEXT, phone TEXT, user_id INTEGER);
+CREATE TABLE Doctors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, specialization TEXT, phone TEXT, available_days TEXT, user_id INTEGER);
+CREATE TABLE Slots (id INTEGER PRIMARY KEY AUTOINCREMENT, doctor_id INTEGER, date TEXT, time TEXT, is_booked INTEGER DEFAULT 0);
+CREATE TABLE Appointments (id INTEGER PRIMARY KEY AUTOINCREMENT, patient_id INTEGER, doctor_id INTEGER, slot_id INTEGER, date TEXT, time TEXT, status TEXT DEFAULT 'BOOKED');
